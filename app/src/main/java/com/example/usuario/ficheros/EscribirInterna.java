@@ -28,6 +28,8 @@ public class EscribirInterna extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_escritura_interna);
 
+        miMemoria = new Memoria(getApplicationContext());
+
         operando1 = (EditText) findViewById(R.id.edt_operando1);
         operando2 = (EditText) findViewById(R.id.edt_operando2);
         resultado = (TextView) findViewById(R.id.txv_resultado);
@@ -57,8 +59,5 @@ public class EscribirInterna extends AppCompatActivity {
                 }
             }
         });
-
-        miMemoria = new Memoria(getApplicationContext());
     }
-
 }

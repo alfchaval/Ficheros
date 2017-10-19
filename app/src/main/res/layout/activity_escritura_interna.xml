@@ -5,7 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
-    tools:context="com.example.usuario.ficheros.MainActivity">
+    tools:context="com.example.usuario.ficheros.EscribirInterna">
 
     <TextView
         android:id="@+id/txv_operando1"

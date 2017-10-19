@@ -5,34 +5,65 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
-    tools:context="com.example.usuario.ficheros.MainActivity">
+    tools:context="com.example.usuario.ficheros.EscribirExterna">
 
-    <Button
-        android:id="@+id/btn1"
+    <TextView
+        android:id="@+id/txv_operando1"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="@string/ejercicio_1"
+        android:text="@string/operando_1"
         />
 
-    <Button
-        android:id="@+id/btn2"
+    <EditText
+        android:id="@+id/edt_operando1"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="@string/ejercicio_2"
+        android:inputType="number" />
+
+    <TextView
+        android:id="@+id/txv_operando2"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="@string/operando_2"
         />
 
-    <Button
-        android:id="@+id/btn3"
+    <EditText
+        android:id="@+id/edt_operando2"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="@string/ejercicio_3"
-        />
+        android:inputType="number" />
 
     <Button
-        android:id="@+id/btn4"
+        android:id="@+id/btn_mas"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="@string/ejercicio_4"
+        android:text="@string/mas"
+        />
+
+    <TextView
+        android:id="@+id/txv_resultado_title"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="@string/resultado"
+        />
+
+    <TextView
+        android:id="@+id/txv_resultado"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        />
+
+    <TextView
+        android:id="@+id/txv_propiedades_title"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="@string/propiedades"
+        />
+
+    <TextView
+        android:id="@+id/txv_propiedades"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
         />
 
 </LinearLayout>

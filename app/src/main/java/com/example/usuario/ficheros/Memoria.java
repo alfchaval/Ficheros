@@ -1,6 +1,7 @@
 package com.example.usuario.ficheros;
 
 import android.content.Context;
+import android.os.Environment;
 import android.util.Log;
 
 import java.io.BufferedWriter;
@@ -26,6 +27,15 @@ public class Memoria {
     public boolean escribirInterna(String fichero, String cadena, Boolean anadir, String codigo) {
         File miFichero;
         miFichero = new File(context.getFilesDir(), fichero);
+        return escribir(miFichero, cadena, anadir, codigo);
+    }
+
+    public boolean escribirExterna(String fichero, String cadena, Boolean anadir, String codigo) {
+        File miFichero, tarjeta;
+        tarjeta = Environment.getExternalStorageDirectory();
+        //tarjeta = Environment.getExternalStoragePublicDirectory("datos/programas/");
+        //tarjeta.mkdirs();
+        miFichero = new File(tarjeta.getAbsolutePath(), fichero);
         return escribir(miFichero, cadena, anadir, codigo);
     }
 
@@ -60,6 +70,13 @@ public class Memoria {
         return mostrarPropiedades(miFichero);
     }
 
+    public String mostrarPropiedadesExterna (String fichero) {
+        File miFichero, tarjeta;
+        tarjeta = Environment.getExternalStorageDirectory();
+        miFichero = new File(tarjeta.getAbsolutePath(), fichero);
+        return mostrarPropiedades(miFichero);
+    }
+
     public String mostrarPropiedades (File fichero) {
         SimpleDateFormat formato = null;
         StringBuffer txt = new StringBuffer();
@@ -77,5 +94,22 @@ public class Memoria {
             txt.append(e.getMessage());
         }
         return txt.toString();
+    }
+
+    public boolean disponibleEscritura(){
+        boolean escritura = false;
+        String estado = Environment.getExternalStorageState();
+        if (estado.equals(Environment.MEDIA_MOUNTED))
+            escritura = true;
+        return escritura;
+    }
+
+    public boolean disponibleLectura(){
+        boolean lectura = false;
+        String estado = Environment.getExternalStorageState();
+        if (estado.equals(Environment.MEDIA_MOUNTED_READ_ONLY)
+                || estado.equals(Environment.MEDIA_MOUNTED))
+            lectura = true;
+        return lectura;
     }
 }
