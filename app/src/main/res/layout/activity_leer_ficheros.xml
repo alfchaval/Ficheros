@@ -7,32 +7,77 @@
     android:orientation="vertical"
     tools:context="com.example.usuario.ficheros.MainActivity">
 
-    <Button
-        android:id="@+id/btn1"
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="res/raw/numero.txt"
+        />
+
+    <EditText
+        android:id="@+id/edtRaw"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="@string/ejercicio_1"
+        android:text="0"
+        />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="res/assets/valor.txt"
+        />
+
+    <EditText
+        android:id="@+id/edtAssets"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="0"
+        />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="dato.txt en memoria interna"
+        />
+
+    <EditText
+        android:id="@+id/edtMemoriaInterna"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="0"
+        />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="dato_sd en memoria externa"
+        />
+
+    <EditText
+        android:id="@+id/edtMemoriaExterna"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="0"
         />
 
     <Button
-        android:id="@+id/btn2"
+        android:id="@+id/btnSumar"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="@string/ejercicio_2"
+        android:text="SUMAR"
         />
 
-    <Button
-        android:id="@+id/btn3"
-        android:layout_width="match_parent"
+    <TextView
+        android:id="@+id/txvMensaje"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="@string/ejercicio_3"
+        android:text="Resultado (añadido a operaciones.txt)"
+        android:visibility="invisible"
         />
 
-    <Button
-        android:id="@+id/btn4"
-        android:layout_width="match_parent"
+    <TextView
+        android:id="@+id/txvResultado"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="@string/ejercicio_4"
         />
 
 </LinearLayout>

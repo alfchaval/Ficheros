@@ -1,13 +1,18 @@
 package com.example.usuario.ficheros;
 
 import android.content.Context;
+import android.content.res.AssetManager;
 import android.os.Environment;
 import android.util.Log;
 
+import java.io.BufferedReader;
 import java.io.BufferedWriter;
 import java.io.File;
+import java.io.FileInputStream;
 import java.io.FileOutputStream;
 import java.io.IOException;
+import java.io.InputStream;
+import java.io.InputStreamReader;
 import java.io.OutputStreamWriter;
 import java.text.SimpleDateFormat;
 import java.util.Date;
@@ -111,5 +116,121 @@ public class Memoria {
                 || estado.equals(Environment.MEDIA_MOUNTED))
             lectura = true;
         return lectura;
+    }
+
+    private Resultado leer(File fichero, String codigo){
+        FileInputStream fis = null;
+        InputStreamReader isw = null;
+        BufferedReader in = null;
+        //String linea;
+        StringBuilder miCadena = new StringBuilder();
+        Resultado resultado= new Resultado();
+        int n;
+        resultado.setCodigo(true);
+        try {
+            fis = new FileInputStream(fichero);
+            isw = new InputStreamReader(fis, codigo);
+            in = new BufferedReader(isw);
+            while ((n = in.read()) != -1)
+                miCadena.append((char) n);
+            //while ((linea = in.readLine()) != null)
+            //miCadena.append(linea).append('\n');
+        } catch (IOException e) {
+            Log.e("Error", e.getMessage());
+            resultado.setCodigo(false);
+            resultado.setMensaje(e.getMessage());
+        } finally {
+            try {
+                if (in != null) {
+                    in.close();
+                    resultado.setContenido(miCadena.toString());
+                }
+            } catch (IOException e) {
+                Log.e("Error al cerrar", e.getMessage());
+                resultado.setCodigo(false);
+                resultado.setMensaje(e.getMessage());
+            }
+        }
+        return resultado;
+    }
+
+    public Resultado leerInterna(String fichero, String codigo){
+        File miFichero;
+        //mifichero = new File(getApplicationContext().getFilesDir(), nombreFichero);
+        miFichero = new File(context.getFilesDir(), fichero);
+        return leer(miFichero, codigo);
+    }
+
+    public Resultado leerExterna(String fichero, String codigo){
+        File miFichero, tarjeta;
+        //tarjeta = Environment.getExternalStoragePublicDirectory("datos/programas/");
+        //tarjeta.mkdirs();
+        tarjeta = Environment.getExternalStorageDirectory();
+        miFichero = new File(tarjeta.getAbsolutePath(), fichero);
+        return leer(miFichero, codigo);
+    }
+
+    public Resultado leerRaw(String fichero){
+        //fichero tendrá el nombre del fichero raw sin la extensión
+        InputStream is = null;
+        StringBuilder miCadena = new StringBuilder();
+        int n;
+        Resultado resultado = new Resultado();
+        resultado.setCodigo(true);
+        try {
+            //is = context.getResources().openRawResource(R.raw.numero);
+            is = context.getResources().openRawResource(
+                    context.getResources().getIdentifier(fichero,"raw", context.getPackageName()));
+            while ((n = is.read()) != -1) {
+                miCadena.append((char) n);
+            }
+        } catch (Exception e) {
+            Log.e("Error", e.getMessage());
+            resultado.setCodigo(false);
+            resultado.setMensaje(e.getMessage());
+        } finally {
+            try {
+                if (is != null) {
+                    is.close();
+                    resultado.setContenido(miCadena.toString());
+                }
+            } catch (Exception e) {
+                Log.e("Error al cerrar", e.getMessage());
+                resultado.setCodigo(false);
+                resultado.setMensaje(e.getMessage());
+            }
+        }
+        return resultado;
+    }
+
+    public Resultado leerAsset(String fichero){
+        AssetManager am = context.getAssets();
+        InputStream is = null;
+        StringBuilder miCadena = new StringBuilder();
+        int n;
+        Resultado resultado = new Resultado();
+        resultado.setCodigo(true);
+        try {
+            is = am.open(fichero);
+            while ((n = is.read()) != -1) {
+                miCadena.append((char) n);
+            }
+        } catch (IOException e) {
+            Log.e("Error", e.getMessage());
+            resultado.setCodigo(false);
+            resultado.setMensaje(e.getMessage());
+        } finally {
+            try {
+                if (is != null) {
+                    is.close();
+                    resultado.setContenido(miCadena.toString());
+                }
+            } catch (Exception e) {
+                Log.e("Error al cerrar", e.getMessage());
+                resultado.setCodigo(false);
+                resultado.setMensaje(e.getMessage());
+            }
+        }
+        return resultado;
     }
 }
