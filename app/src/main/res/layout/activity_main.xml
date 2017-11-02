@@ -35,4 +35,11 @@
         android:text="@string/ejercicio_4"
         />
 
+    <Button
+        android:id="@+id/btn5"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="@string/ejercicio_5"
+        />
+
 </LinearLayout>

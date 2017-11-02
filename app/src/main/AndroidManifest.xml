@@ -22,6 +22,7 @@
         <activity android:name=".EscribirExterna" />
         <activity android:name=".EscribirInterna" />
         <activity android:name=".LeerFicheros" />
+        <activity android:name=".Exploracion" />
     </application>
 
 </manifest>

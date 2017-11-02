@@ -1,38 +1,118 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
-    android:layout_margin="30dp"
+    android:layout_margin="10dp"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
-    tools:context="com.example.usuario.ficheros.MainActivity">
+    tools:context="com.example.usuario.ficheros.Codificacion">
 
     <Button
-        android:id="@+id/btn1"
+        android:id="@+id/btnExplorar"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="@string/ejercicio_1"
+        android:text="EXPLORAR"
         />
 
-    <Button
-        android:id="@+id/btn2"
+    <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="@string/ejercicio_2"
-        />
+        android:orientation="horizontal"
+        >
 
-    <Button
-        android:id="@+id/btn3"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="@string/ejercicio_3"
-        />
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Fichero a leer"
 
-    <Button
-        android:id="@+id/btn4"
+            />
+
+        <EditText
+            android:id="@+id/edtLeer"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="operaciones.txt"
+            android:layout_weight="1"
+            />
+
+        <Button
+            android:id="@+id/btnLeer"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="LEER"
+            />
+
+    </LinearLayout>
+
+    <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="@string/ejercicio_4"
-        />
+        android:orientation="horizontal"
+        >
+
+        <EditText
+            android:id="@+id/edtContenido"
+            android:layout_width="match_parent"
+            android:layout_height="100dp" />
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        >
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Fichero a guardar"
+            />
+
+        <EditText
+            android:id="@+id/edtGuardar"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="otro.txt"
+            android:layout_weight="1"
+            />
+
+        <Button
+            android:id="@+id/btnGuardar"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="GUARDAR"
+            />
+
+    </LinearLayout>
+
+    <RadioGroup
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        >
+
+        <RadioButton
+            android:id="@+id/rbtnUTF8"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="UTF-8"
+            android:checked="true"
+            />
+
+        <RadioButton
+            android:id="@+id/rbtnUTF16"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="UTF-16"
+            />
+
+        <RadioButton
+            android:id="@+id/rbtnISO"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="ISO-8859-15"
+            />
+
+    </RadioGroup>
 
 </LinearLayout>
