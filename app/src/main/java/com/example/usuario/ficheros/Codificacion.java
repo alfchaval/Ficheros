@@ -41,7 +41,7 @@ public class Codificacion extends AppCompatActivity {
         btnLeer.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                EscribirFichero();
+                LeerFichero();
             }
         });
 
@@ -49,7 +49,7 @@ public class Codificacion extends AppCompatActivity {
         btnGuardar.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                LeerFichero();
+                EscribirFichero();
             }
         });
 
@@ -67,7 +67,7 @@ public class Codificacion extends AppCompatActivity {
         if (requestCode == ABRIRFICHERO_REQUEST_CODE)
             if (resultCode == RESULT_OK) {
                 String ruta = data.getData().getPath();
-                edtLeer.setText(ruta);
+                edtLeer.setText(ruta.substring(ruta.lastIndexOf(":") + 1));
                 LeerFichero();
             }
             else {
@@ -82,7 +82,7 @@ public class Codificacion extends AppCompatActivity {
         return "";
     }
 
-    private void EscribirFichero() {
+    private void LeerFichero() {
         String mensaje = "";
         Resultado resultado = miMemoria.leerExterna(edtLeer.getText().toString(), codificacion());
         if(resultado.getCodigo()) {
@@ -95,7 +95,7 @@ public class Codificacion extends AppCompatActivity {
         Toast.makeText(getApplicationContext(), mensaje, Toast.LENGTH_SHORT).show();
     }
 
-    private void LeerFichero() {
+    private void EscribirFichero() {
         String mensaje = "";
         if(miMemoria.disponibleEscritura()) {
             if(miMemoria.escribirExterna(edtGuardar.getText().toString(), edtContenido.getText().toString(), false, codificacion())) {
